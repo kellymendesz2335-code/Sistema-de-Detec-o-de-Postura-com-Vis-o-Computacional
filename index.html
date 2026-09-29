@@ -1,0 +1,172 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AEROTECH | Análise Postural</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="topbar">
+        <div class="brand">
+            <span class="brand-icon">A</span>
+            <div>
+                <h1>AEROTECH</h1>
+                <p>ANÁLISE DE DESENVOLVIMENTO POSTURAL</p>
+            </div>
+        </div>
+        <span class="system-status">
+            <span class="status-dot"></span>
+            SISTEMA DE VISÃO COMPUTACIONAL
+        </span>
+    </header>
+
+    <main>
+        <section class="intro">
+            <div>
+                <span class="tag">POSTURE MONITORING SYSTEM</span>
+                <h2>Monitoramento de <span>Postura</span></h2>
+                <p>
+                    Análise postural em tempo real utilizando
+                    visão computacional e inteligência artificial.
+                </p>
+            </div>
+            <div class="live-badge">
+                <span class="status-dot"></span>
+                MONITORAMENTO
+            </div>
+        </section>
+
+        <section class="dashboard">
+            <div class="camera-panel panel">
+                <div class="panel-header">
+                    <div>
+                        <span class="section-label">01 / CAPTURA</span>
+                        <h3>Visão computacional</h3>
+                    </div>
+                    <span class="live-label">● LIVE</span>
+                </div>
+
+                <div class="camera-container">
+                    <video id="video" autoplay playsinline muted></video>
+                    <canvas id="canvas"></canvas>
+
+                    <div id="camera-message" class="camera-message">
+                        <div class="camera-symbol">⌁</div>
+                        <h3>Webcam desconectada</h3>
+                        <p>Inicie o monitoramento para começar.</p>
+                    </div>
+
+                    <div class="camera-overlay">
+                        <span>CAM 01</span>
+                        <span id="camera-clock">00:00:00</span>
+                    </div>
+                </div>
+
+                <div class="camera-controls">
+                    <button id="start-button" class="primary-button">
+                        INICIAR MONITORAMENTO
+                    </button>
+                    <button id="stop-button" class="secondary-button" disabled>
+                        ENCERRAR
+                    </button>
+                </div>
+
+                <p id="system-message" class="system-message">
+                    Aguardando inicialização.
+                </p>
+            </div>
+
+            <div class="analysis-panel">
+                <div class="panel panel-status">
+                    <span class="section-label">02 / DIAGNÓSTICO VISUAL</span>
+                    <h3>Estado postural</h3>
+
+                    <div id="posture-indicator" class="posture-indicator">
+                        <span class="indicator-dot"></span>
+                        <span id="posture-text">Aguardando análise</span>
+                    </div>
+
+                    <p id="posture-description">
+                        Inicie a câmera para analisar sua postura.
+                    </p>
+                </div>
+
+                <div class="panel">
+                    <span class="section-label">03 / MÉTRICAS</span>
+                    <h3>Indicadores posturais</h3>
+
+                    <div class="metric">
+                        <div class="metric-heading">
+                            <span>Inclinação do pescoço</span>
+                            <span id="neck-value">--°</span>
+                        </div>
+                        <div class="progress-track">
+                            <div id="neck-bar" class="progress-bar"></div>
+                        </div>
+                        <small>Referência: abaixo de 40°</small>
+                    </div>
+
+                    <div class="metric">
+                        <div class="metric-heading">
+                            <span>Inclinação do tronco</span>
+                            <span id="torso-value">--°</span>
+                        </div>
+                        <div class="progress-track">
+                            <div id="torso-bar" class="progress-bar purple"></div>
+                        </div>
+                        <small>Referência: abaixo de 10°</small>
+                    </div>
+
+                    <div class="metric">
+                        <div class="metric-heading">
+                            <span>Alinhamento dos ombros</span>
+                            <span id="shoulder-value">--</span>
+                        </div>
+                        <div class="alignment-status" id="shoulder-status">
+                            Aguardando detecção
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel alert-panel">
+                    <span class="section-label">04 / TEMPO DE POSTURA</span>
+                    <h3>Tempo em postura inadequada</h3>
+                    <div id="timer" class="timer">00:00</div>
+                    <div class="timer-track">
+                        <div id="timer-bar"></div>
+                    </div>
+                    <p id="timer-description">
+                        O contador começa quando uma postura inadequada é detectada.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="bottom-info">
+            <div>
+                <span class="section-label">TECNOLOGIA</span>
+                <p>MediaPipe Pose · JavaScript · HTML5 · CSS3</p>
+            </div>
+            <div>
+                <span class="section-label">OBSERVAÇÃO</span>
+                <p>
+                    Sistema experimental de monitoramento visual.
+                    Não substitui avaliação profissional.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <span>AEROTECH © 2026</span>
+        <span>Desenvolvido por <strong>Kelly Mendes</strong></span>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/pose/pose.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
